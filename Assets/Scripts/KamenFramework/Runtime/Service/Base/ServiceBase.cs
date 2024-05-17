@@ -4,6 +4,7 @@ namespace KamenFramework.Runtime.Service.Base
 {
     public abstract class ServiceBase : IService
     {
+        protected KamenGame GameRoot => KamenGame.Instance;
         public IEnumerator Init()
         {
             BeforeInit();
@@ -23,7 +24,7 @@ namespace KamenFramework.Runtime.Service.Base
 
         public virtual void AfterInit()
         {
-
+            
         }
 
         public virtual void Update()
@@ -34,6 +35,15 @@ namespace KamenFramework.Runtime.Service.Base
         public virtual void FixUpdate()
         {
 
+        }
+
+        public virtual void Shut()
+        {
+            
+        }
+        public void Dispose()
+        {
+            
         }
     }
 }

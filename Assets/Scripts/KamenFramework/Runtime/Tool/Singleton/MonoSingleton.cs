@@ -1,0 +1,110 @@
+﻿/*
+* @Author: Kamen
+* @Description:
+* @Date: 2023年10月25日 星期三 15:10:16
+* @Modify:
+*/
+
+using KamenFramework.Runtime.Tool.Log;
+using UnityEngine;
+
+namespace KamenFramework.Runtime.Tool.Singleton
+{
+    public class MonoSingleton<T> : MonoSingletonBase where T : MonoBehaviour
+    {
+        private static readonly string mMonoSingletonRoot = "KamenApp/Kamen";
+
+        private static T mInstance = null;
+        public static T Instance
+        {
+            get
+            {
+                if (null == mInstance)
+                {
+                    var go = GameObject.Find(mMonoSingletonRoot);
+                    if (go)
+                    {
+                        mInstance = go.GetComponent<T>();
+                        if (mInstance == null)
+                        {
+                            mInstance = go.AddComponent<T>();
+                            var singleton = mInstance as MonoSingletonInterface;
+                            if (singleton != null)
+                            {
+                                /// OnInitialize晚于AwakeEx执行;
+                                singleton.MonoSingletonInterfaceOnInitialize();
+                            }
+                        }
+                    }
+                }
+                return mInstance;
+            }
+        }
+
+        public static bool ApplicationIsPlaying => mInstance != null;
+
+        protected MonoSingleton()
+        {
+            if (null == mInstance)
+            {
+                KLogger.Log($"[MonoSingleton]{typeof(T)} singleton instance created.",Color.green);
+            }
+        }
+
+        void Awake()
+        {
+            AwakeEx();
+        }
+
+        void Start()
+        {
+            StartEx();
+        }
+
+        void OnEnable()
+        {
+            OnEnableEx();
+        }
+
+        void FixedUpdate()
+        {
+            FixedUpdateEx(Time.deltaTime);
+        }
+
+        void Update()
+        {
+            UpdateEx(Time.deltaTime);
+        }
+
+        void LateUpdate()
+        {
+            LateUpdateEx(Time.deltaTime);
+        }
+
+        void OnDisable()
+        {
+            OnDisableEx();
+        }
+
+        /// MonoSingleton只有在ApplicationQuit时才会Destroy;
+        void OnApplicationQuit()
+        {
+            var singleton = mInstance as MonoSingletonInterface;
+            if (singleton != null)
+            {
+                singleton.MonoSingletonInterfaceOnUnInitialize();
+            }
+            OnDestroyEx();
+            mInstance = null;
+        }
+
+        protected virtual void AwakeEx() { }
+        protected virtual void StartEx() { }
+        protected virtual void OnEnableEx() { }
+        protected virtual void FixedUpdateEx(float interval) { }
+        protected virtual void UpdateEx(float interval) { }
+        protected virtual void LateUpdateEx(float interval) { }
+        protected virtual void OnDisableEx() { }
+        protected virtual void OnDestroyEx() { }
+    }
+}

@@ -6,9 +6,7 @@ namespace KamenFramework.Runtime.Service.ServiceManager
     {
         T GetService<T>() where T : IService;
 
-        void Registered(IService service);
-
-        void AddService(string serviceName, IService service);
+        void RegisteredService<T>(IService service);
 
         void RemoveService(string serviceName);
     }
