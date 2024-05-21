@@ -1,7 +1,6 @@
 ﻿using System;
-using KamenFramework.Runtime.Service.Message.Interface.Message;
 
-namespace KamenFramework.Runtime.Service.Message.Basic.Message
+namespace KamenFramework
 {
     public class MessageHandle<T> : IMessageHandle, IDisposable
     {

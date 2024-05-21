@@ -5,14 +5,14 @@
 * @Modify:
 */
 
-using KamenFramework.Runtime.Tool.Log;
+
 using UnityEngine;
 
-namespace KamenFramework.Runtime.Tool.Singleton
+namespace KamenFramework
 {
     public class MonoSingleton<T> : MonoSingletonBase where T : MonoBehaviour
     {
-        private static readonly string mMonoSingletonRoot = "KamenApp/Kamen";
+        private static readonly string mMonoSingletonRoot = "KamenApp/Service";
 
         private static T mInstance = null;
         public static T Instance
@@ -47,7 +47,7 @@ namespace KamenFramework.Runtime.Tool.Singleton
         {
             if (null == mInstance)
             {
-                KLogger.Log($"[MonoSingleton]{typeof(T)} singleton instance created.",Color.green);
+                KLogger.Log($"[MonoSingleton]{typeof(T)} singleton instance created.");
             }
         }
 

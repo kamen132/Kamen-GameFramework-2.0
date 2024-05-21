@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace KamenFramework.Runtime.Tool
+namespace KamenFramework
 {
      /// <summary>
     /// 工具类 - 本地缓存 PlayerPrefs

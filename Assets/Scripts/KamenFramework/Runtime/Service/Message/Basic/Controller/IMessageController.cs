@@ -1,6 +1,4 @@
-﻿using KamenFramework.Runtime.Service.Message.Basic.Message;
-
-namespace KamenFramework.Runtime.Service.Message.Basic.Controller
+﻿namespace KamenFramework
 {
     public interface IMessageController<in T> where T : MessageModel
     {

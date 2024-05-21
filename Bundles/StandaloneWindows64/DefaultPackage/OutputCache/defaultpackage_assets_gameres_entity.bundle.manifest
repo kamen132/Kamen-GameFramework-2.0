@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 3309112144
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ec11d14cdc9d5be6d5bf2a6be8c9b7ab
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a3954d9da6324b836c32a89fa85d00a9
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameRes/Entity/Cube.prefab
+Dependencies: []

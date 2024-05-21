@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using KamenFramework.Runtime.Service.Base;
 
-namespace KamenFramework.Runtime.Service.Coroutine
+namespace KamenFramework
 {
     public class CoroutineService: ServiceBase ,ICoroutineService
     {

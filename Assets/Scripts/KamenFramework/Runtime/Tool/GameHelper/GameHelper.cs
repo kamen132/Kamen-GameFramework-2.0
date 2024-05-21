@@ -1,7 +1,7 @@
-﻿using KamenFramework.Runtime.Tool.Log;
+﻿
 using UnityEngine;
 
-namespace KamenFramework.Runtime.Tool
+namespace KamenFramework
 {
     public partial class GameHelper
     {

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using KamenFramework.Runtime.Service.Base;
-using KamenFramework.Runtime.Service.Message.Interface.Message;
 
-namespace KamenFramework.Runtime.Service.Message.Basic.Message
+namespace KamenFramework
 {
     public class MessageService : ServiceBase ,IMessageService
     {

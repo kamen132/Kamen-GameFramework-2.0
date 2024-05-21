@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KamenFramework.Runtime.Tool
+namespace KamenFramework
 {
        /// <summary>
     /// 工具类 - 时间 Timer

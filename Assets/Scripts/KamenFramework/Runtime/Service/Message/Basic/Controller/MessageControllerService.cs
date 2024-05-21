@@ -2,9 +2,8 @@
 using System.Collections;
 using System.Linq;
 using System.Reflection;
-using KamenFramework.Runtime.Service.Base;
 
-namespace KamenFramework.Runtime.Service.Message.Basic.Controller
+namespace KamenFramework
 {
     public interface IControllerService : IService
     {
@@ -14,7 +13,7 @@ namespace KamenFramework.Runtime.Service.Message.Basic.Controller
     {
         protected override IEnumerator OnInit()
         {
-            string controllerName = "Game.MessageController";
+            string controllerName = "Game.Message";
             foreach (Type item in (from type in AppDomain.CurrentDomain.GetAssemblies().First((Assembly a) => a.GetName().Name == controllerName).GetTypes()
                 where type.GetInterfaces().Any((Type t) => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IMessageController<>))
                 select type).ToList())

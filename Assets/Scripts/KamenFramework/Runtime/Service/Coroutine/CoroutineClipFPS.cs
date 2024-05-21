@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Diagnostics;
-using KamenFramework.Runtime.Tool.Log;
 using UnityEngine;
 
-namespace KamenFramework.Runtime.Service.Coroutine
+namespace KamenFramework
 {
     /// <summary>
     /// 分帧处理数据
@@ -56,12 +55,12 @@ namespace KamenFramework.Runtime.Service.Coroutine
                     }
 
                     mAction?.Invoke(dataIndex);
-#if UNITY_EDITOR
                 }
 
                 yield return null;
             }
 
+#if UNITY_EDITOR
             stopwatch.Stop();
             KLogger.Log($"{mName}刷新耗时 " + (float) stopwatch.Elapsed.TotalSeconds + " milliseconds");
 #endif

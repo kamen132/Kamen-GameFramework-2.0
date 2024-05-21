@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 679183146
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 93a1f89f4fd03aae128e91a44999725c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 48c95656d94d38fa93e725512e8107b3
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 872eb9dff1444dc3964f119a0dedcaa8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6f8dc44933ae4ddd9fb975a3c34aa04b, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameRes/Config/KamenApp.prefab
+Dependencies: []

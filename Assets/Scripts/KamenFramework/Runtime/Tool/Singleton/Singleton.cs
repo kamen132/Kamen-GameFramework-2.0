@@ -1,4 +1,4 @@
-﻿namespace KamenFramework.Runtime.Tool.Singleton
+﻿namespace KamenFramework
 {
     public class Singleton<T> : SingletonBase where T : class, new()
     {

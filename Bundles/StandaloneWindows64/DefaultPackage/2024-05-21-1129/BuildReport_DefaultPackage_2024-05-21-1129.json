@@ -1,0 +1,80 @@
+{
+    "Summary": {
+        "YooVersion": "",
+        "UnityVersion": "2021.3.12f1",
+        "BuildDate": "2024/5/21 18:49:57",
+        "BuildSeconds": 3,
+        "BuildTarget": 19,
+        "BuildMode": 0,
+        "BuildPipeline": "BuiltinBuildPipeline",
+        "BuildPackageName": "DefaultPackage",
+        "BuildPackageVersion": "2024-05-21-1129",
+        "UniqueBundleName": true,
+        "EnableAddressable": false,
+        "LocationToLower": false,
+        "IncludeAssetGUID": false,
+        "IgnoreDefaultType": true,
+        "AutoCollectShaders": true,
+        "EnableSharePackRule": true,
+        "EncryptionClassName": "null",
+        "FileNameStyle": 1,
+        "CompressOption": 2,
+        "DisableWriteTypeTree": false,
+        "IgnoreTypeTreeChanges": true,
+        "AssetFileTotalCount": 2,
+        "MainAssetTotalCount": 2,
+        "AllBundleTotalCount": 2,
+        "AllBundleTotalSize": 48392,
+        "EncryptedBundleTotalCount": 0,
+        "EncryptedBundleTotalSize": 0
+    },
+    "AssetInfos": [
+        {
+            "Address": "",
+            "AssetPath": "Assets/GameRes/Config/KamenApp.prefab",
+            "AssetGUID": "d89f4b11ebfe2964889b25841c065cd9",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_gameres_config.bundle",
+            "MainBundleSize": 2523,
+            "DependAssets": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/GameRes/Entity/Cube.prefab",
+            "AssetGUID": "d09867a14e27c1441bb6239e2a35ea60",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_gameres_entity.bundle",
+            "MainBundleSize": 45869,
+            "DependAssets": []
+        }
+    ],
+    "BundleInfos": [
+        {
+            "BundleName": "defaultpackage_assets_gameres_config.bundle",
+            "FileName": "defaultpackage_assets_gameres_config.bundle",
+            "FileHash": "decdb2551b0d2842ab2e6a2d7f9c2ad9",
+            "FileCRC": "0ab684d5",
+            "FileSize": 2523,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "AllBuiltinAssets": [
+                "Assets/GameRes/Config/KamenApp.prefab"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_assets_gameres_entity.bundle",
+            "FileName": "defaultpackage_assets_gameres_entity.bundle",
+            "FileHash": "fb3dd27acadbf84e684b1fe65948782f",
+            "FileCRC": "56445f77",
+            "FileSize": 45869,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "AllBuiltinAssets": [
+                "Assets/GameRes/Entity/Cube.prefab"
+            ]
+        }
+    ],
+    "IndependAssets": []
+}

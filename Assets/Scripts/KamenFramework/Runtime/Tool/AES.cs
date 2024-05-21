@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
 
-namespace KamenFramework.Runtime.Tool
+namespace KamenFramework
 {
     /// <summary>
     /// AES加密解密

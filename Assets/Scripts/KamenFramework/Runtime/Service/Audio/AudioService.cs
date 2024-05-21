@@ -1,6 +1,5 @@
-﻿using KamenFramework.Runtime.Service.Base;
-
-namespace KamenFramework.Runtime.Service.Audio
+﻿
+namespace KamenFramework
 {
     public class AudioService : ServiceBase , IAudioService
     {

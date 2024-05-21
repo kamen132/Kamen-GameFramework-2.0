@@ -1,8 +1,6 @@
 ﻿using System;
-using KamenFramework.Runtime.Service.Base;
-using KamenFramework.Runtime.Service.Message.Basic.Message;
 
-namespace KamenFramework.Runtime.Service.Message.Interface.Message
+namespace KamenFramework
 {
     /// <summary>
     /// 消息服务接口

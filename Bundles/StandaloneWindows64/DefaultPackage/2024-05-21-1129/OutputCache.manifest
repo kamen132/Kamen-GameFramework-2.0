@@ -1,0 +1,10 @@
+ManifestFileVersion: 0
+CRC: 3472812727
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: defaultpackage_assets_gameres_config.bundle
+      Dependencies: {}
+    Info_1:
+      Name: defaultpackage_assets_gameres_entity.bundle
+      Dependencies: {}

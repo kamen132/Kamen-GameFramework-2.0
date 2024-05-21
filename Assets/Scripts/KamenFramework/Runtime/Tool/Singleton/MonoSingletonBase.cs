@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace KamenFramework.Runtime.Tool.Singleton
+namespace KamenFramework
 {
     public class MonoSingletonInterface : MonoBehaviour
     {

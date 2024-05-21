@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections;
-using KamenFramework.Runtime.Tool.Log;
 
-namespace KamenFramework.Runtime.Service.Coroutine
+
+namespace KamenFramework
 {
-        /// <summary>
+    /// <summary>
     /// 协程任务
     /// </summary>
     public class CoroutineTask
@@ -13,15 +13,17 @@ namespace KamenFramework.Runtime.Service.Coroutine
         /// 协程id
         /// </summary>
         public int Id { get; private set; }
+
         /// <summary>
         /// 是否正在运行
         /// </summary>
         public bool Running { get; private set; }
+
         /// <summary>
         /// 是否暂停
         /// </summary>
         public bool Paused { get; private set; }
-        
+
         public CoroutineTask(int id)
         {
             Id = id;
@@ -36,7 +38,7 @@ namespace KamenFramework.Runtime.Service.Coroutine
         {
             Running = false;
         }
-        
+
         /// <summary>
         /// 暂停
         /// </summary>

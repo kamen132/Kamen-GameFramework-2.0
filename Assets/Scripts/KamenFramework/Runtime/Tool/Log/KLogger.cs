@@ -4,11 +4,12 @@ using KamenFramework.Runtime.Service;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace KamenFramework.Runtime.Tool.Log
+namespace KamenFramework
 {
-   public static class KLogger
+    public static class KLogger
     {
         public static bool useLog = true;
+
         [Conditional("DEBUG"), Conditional("UNITY_EDITOR")]
         public static void Log(string log)
         {
@@ -60,6 +61,7 @@ namespace KamenFramework.Runtime.Tool.Log
         {
             Log(Lang.Format(format, param));
         }
+
         public static void LogError(string log)
         {
             if (useLog)

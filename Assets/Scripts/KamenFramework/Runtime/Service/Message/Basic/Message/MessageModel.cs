@@ -1,4 +1,4 @@
-﻿namespace KamenFramework.Runtime.Service.Message.Basic.Message
+﻿namespace KamenFramework
 {
     public abstract class MessageModel
     {

@@ -2,18 +2,26 @@
 
 using System;
 using System.Collections;
-using KamenFramework.Runtime.Service.Base;
-using KamenFramework.Runtime.Tool.Log;
+
 using UnityEngine;
 using YooAsset;
 using Object = UnityEngine.Object;
 
-namespace KamenFramework.Runtime.Service.Resource
+namespace KamenFramework
 {
     public class ResourceService : ServiceBase, IResourceService
     {
         private readonly float UnloadUnusedAssetTime = 30.0f;
         private float mUnloadUnusedAssetTimer;
+
+        protected override IEnumerator OnInit()
+        {
+            YooAssets.Initialize();
+            var package = YooAssets.CreatePackage("DefaultPackage");
+            YooAssets.SetDefaultPackage(package);
+            var initParameters = new OfflinePlayModeParameters();
+            yield return package.InitializeAsync(initParameters);
+        }
 
         public T Load<T>(string path) where T : Object
         {

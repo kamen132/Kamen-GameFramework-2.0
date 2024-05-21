@@ -1,0 +1,48 @@
+{
+    "FileVersion": "2.0.0",
+    "EnableAddressable": false,
+    "LocationToLower": false,
+    "IncludeAssetGUID": false,
+    "OutputNameStyle": 1,
+    "BuildPipeline": "BuiltinBuildPipeline",
+    "PackageName": "DefaultPackage",
+    "PackageVersion": "2024-05-21-1129",
+    "AssetList": [
+        {
+            "Address": "",
+            "AssetPath": "Assets/GameRes/Config/KamenApp.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/GameRes/Entity/Cube.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        }
+    ],
+    "BundleList": [
+        {
+            "BundleName": "defaultpackage_assets_gameres_config.bundle",
+            "UnityCRC": 679183146,
+            "FileHash": "decdb2551b0d2842ab2e6a2d7f9c2ad9",
+            "FileCRC": "0ab684d5",
+            "FileSize": 2523,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_gameres_entity.bundle",
+            "UnityCRC": 3309112144,
+            "FileHash": "fb3dd27acadbf84e684b1fe65948782f",
+            "FileCRC": "56445f77",
+            "FileSize": 45869,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        }
+    ]
+}

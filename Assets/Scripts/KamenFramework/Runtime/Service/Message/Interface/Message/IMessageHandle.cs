@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KamenFramework.Runtime.Service.Message.Interface.Message
+namespace KamenFramework
 {
     /// <summary>
     /// 消息处理

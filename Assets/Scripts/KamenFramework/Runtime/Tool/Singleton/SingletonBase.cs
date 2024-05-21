@@ -1,4 +1,4 @@
-﻿namespace KamenFramework.Runtime.Tool.Singleton
+﻿namespace KamenFramework
 {
     public delegate void OnSingletonInitializeEventHandler();
     public delegate void OnSingletonUnInitializeEventHandler();

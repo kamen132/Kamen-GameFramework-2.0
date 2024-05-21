@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using KamenFramework.Runtime.Service.Message.Basic.Message;
-using KamenFramework.Runtime.Service.Message.Interface.Message;
 
-namespace KamenFramework.Runtime.Service.Message.Basic.Model
+namespace KamenFramework
 {
     public abstract class ManualModel : IModel
     {
