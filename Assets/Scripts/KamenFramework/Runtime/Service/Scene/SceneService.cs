@@ -132,11 +132,12 @@ namespace KamenFramework
                     callbackWithResult?.Invoke(true);
                 }
             }
-
+            
             callback?.Invoke();
             InSwitching = false;
             Resources.UnloadUnusedAssets();
             GC.Collect();
+            KLogger.Log($"--Switch Success CurScene:{SceneContext.SceneType}--",GameHelper.ColorGreen);
         }
 
         /// <summary>
@@ -300,6 +301,22 @@ namespace KamenFramework
             foreach (var layer in SceneMap)
             {
                 layer.Value.OnFixUpdate();
+            }
+        }
+
+        public override void Shut()
+        {
+            foreach (var scene in SceneMap)
+            {
+                scene.Value.OnPreLeave();
+            }
+            foreach (var scene in SceneMap)
+            {
+                scene.Value.OnLeave();
+            }
+            foreach (var scene in SceneMap)
+            {
+                scene.Value.OnDestroy();
             }
         }
     }

@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections;
 
 using UnityEngine;
@@ -22,12 +20,7 @@ namespace KamenFramework
             var initParameters = new OfflinePlayModeParameters();
             yield return package.InitializeAsync(initParameters);
         }
-
-        public T Load<T>(string path) where T : Object
-        {
-            return YooAssets.LoadAssetSync<T>(path).GetAssetObject<T>();
-        }
-
+        
         public void LoadAsync<T>(string path, Action<AssetHandle> completed) where T : Object
         {
             AssetHandle handle = YooAssets.LoadAssetAsync<T>(path);
@@ -72,6 +65,7 @@ namespace KamenFramework
         {
             var package = YooAssets.GetPackage("DefaultPackage");
             package.UnloadUnusedAssets();
+            KLogger.Log("--Clean Assets--", GameHelper.ColorGreen);
         }
     }
 }

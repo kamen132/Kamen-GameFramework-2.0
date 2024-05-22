@@ -19,5 +19,8 @@ namespace KamenFramework
         void OnUpdate();
         void OnFixUpdate();
         void OnInit();
+        void OnPreLeave();
+        void OnLeave();
+        void OnDestroy();
     }
 }

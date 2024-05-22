@@ -32,7 +32,7 @@ namespace KamenFramework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T CreateEntity<T>(IModel model=null) where T : TSceneEntity, new()
+        public T CreateEntity<T>(IModel model = null) where T : TSceneEntity, new()
         {
             T entity = new T();
             entity.Init(NextEntityIndex++, model);

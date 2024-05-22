@@ -33,5 +33,12 @@ public class FrameworkTest : MonoBehaviour
         {
             KamenGame.Instance.SceneService.SwitchScene(SceneType.Demo);
         }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            var battleScene =KamenGame.Instance.SceneService.TryGetScene<BattleScene>(SceneType.Battle);
+            battleScene?.CreateEnemy();
+            battleScene?.CreateHero();
+        }
     }
 }
