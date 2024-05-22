@@ -49,7 +49,7 @@ namespace Test
         protected override void OnUpdate()
         {
             base.OnUpdate();
-            KLogger.Log("EnemyMoving!!!");
+            //KLogger.Log("EnemyMoving!!!");
         }
 
         protected override void OnDispose()
@@ -62,14 +62,16 @@ namespace Test
     {
         private GameObject mTarget;
         private EnemyMoveComponent EnemyMoveComponent;
+
         protected override void OnInit()
         {
             EnemyMoveComponent = AddComponent<EnemyMoveComponent>();
-            KamenGame.Instance.ResourceService.LoadAsync<GameObject>("Assets/GameRes/Entity/Cube.prefab", (handle) =>
-            {
-                mTarget = handle.InstantiateSync();
-                handle.Release();
-            });
+            // KamenGame.Instance.ResourceService.LoadAsync<GameObject>("Assets/GameRes/Entity/Cube.prefab", (handle) =>
+            // {
+            //     mTarget = handle.InstantiateSync();
+            //     handle.Release();
+            // });
+            mTarget = KamenGame.Instance.ObjectPoolService.Get("Assets/GameRes/Entity/Cube.prefab");
         }
 
         public override void Dispose()

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-
 using UnityEngine;
 using YooAsset;
 using Object = UnityEngine.Object;
@@ -20,7 +19,28 @@ namespace KamenFramework
             var initParameters = new OfflinePlayModeParameters();
             yield return package.InitializeAsync(initParameters);
         }
-        
+
+        public TObject LoadAsset<TObject>(string location) where TObject : Object
+        {
+            AssetHandle handle = YooAssets.LoadAssetSync(location);
+            return LoadAsset<TObject>(location, handle);
+        }
+
+        private TObject LoadAsset<TObject>(string path, AssetHandle handle) where TObject : Object
+        {
+            var obj = handle.GetAssetObject<TObject>();
+            if (obj is GameObject)
+            {
+                var ins = handle.InstantiateSync();
+                ins.AddComponent<ResourceHandler>().Init(path, handle);
+                return ins as TObject;
+            }
+
+            using (handle)
+            {
+                return obj;
+            }
+        }
         public void LoadAsync<T>(string path, Action<AssetHandle> completed) where T : Object
         {
             AssetHandle handle = YooAssets.LoadAssetAsync<T>(path);
@@ -58,9 +78,7 @@ namespace KamenFramework
                 mUnloadUnusedAssetTimer = 0f;
             }
         }
-
-        // 卸载所有引用计数为零的资源包。
-        // 可以在切换场景之后调用资源释放方法或者写定时器间隔时间去释放。
+        
         private void UnloadUnusedAssets()
         {
             var package = YooAssets.GetPackage("DefaultPackage");

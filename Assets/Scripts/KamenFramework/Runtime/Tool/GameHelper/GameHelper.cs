@@ -1,10 +1,15 @@
 ﻿
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace KamenFramework
 {
     public partial class GameHelper
     {
+        public static GameObject GetRoot()
+        {
+            return GameObject.Find("KamenApp");
+        }
         public static void AttachTo(GameObject go, GameObject parent)
         {
             if (parent == null)

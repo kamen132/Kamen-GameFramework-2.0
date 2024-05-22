@@ -32,6 +32,8 @@
         /// </summary>
         public IResourceService ResourceService => ServiceManager.Instance.GetService<IResourceService>();
 
+        public IObjectPoolService ObjectPoolService => ServiceManager.Instance.GetService<IObjectPoolService>();
+
         public SceneObjectContainer MainSceneContainer => mMainSceneContainer;
         private SceneObjectContainer mMainSceneContainer;
 

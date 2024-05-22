@@ -23,6 +23,7 @@ namespace KamenFramework
             RegisteredService<ISceneService>(new SceneService());
             RegisteredService<IAudioService>(new AudioService());
             RegisteredService<ICoroutineService>(new CoroutineService());
+            RegisteredService<IObjectPoolService>(new ObjectPoolService());
             KLogger.Log("--service add success--", GameHelper.ColorGreen);
         }
 

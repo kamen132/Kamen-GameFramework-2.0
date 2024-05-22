@@ -24,6 +24,7 @@ namespace KamenFramework
         /// </summary>
         public SceneStateType StateType { get; set; }
         
+        
         public KamenScene(SceneObjectContainer sceneContext)
         {
             SceneContext = sceneContext;
