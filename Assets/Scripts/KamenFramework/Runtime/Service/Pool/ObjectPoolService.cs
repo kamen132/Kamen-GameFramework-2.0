@@ -11,10 +11,14 @@ namespace KamenFramework
     {
         private readonly Dictionary<string, Queue<Object>> Pool = new Dictionary<string, Queue<Object>>();
         private Transform mPoolRoot;
+        private int mPoolTotalCount;
+        public int PoolTotalCount => mPoolTotalCount;
+
         protected override IEnumerator OnInit()
         {
             mPoolRoot = new GameObject("PoolRoot").transform;
             mPoolRoot.SetParent(GameHelper.GetRoot().transform);
+            mPoolRoot.gameObject.SetActive(false);
             return base.OnInit();
         }
 
@@ -42,10 +46,11 @@ namespace KamenFramework
                 obj = source.Dequeue() as T;
             }
 
+            mPoolTotalCount--;
             return obj;
         }
         
-        public void Push(GameObject obj, bool isMove)
+        public void Push(GameObject obj)
         {
             if (obj == null)
             {
@@ -61,15 +66,8 @@ namespace KamenFramework
             }
 
             var path = mono.AssetPath;
-            if (isMove)
-            {
-                obj.transform.SetParent(mPoolRoot);
-            }
-            else
-            {
-                obj.transform.position = new Vector3(9999, 9999);
-            }
-
+            obj.transform.SetParent(mPoolRoot);
+            obj.transform.position = new Vector3(9999, 9999);
             Push(path, obj);
         }
 
@@ -86,8 +84,26 @@ namespace KamenFramework
                 queue = new Queue<Object>();
                 Pool.Add(path, queue);
             }
-            
+
+            mPoolTotalCount++;
             queue.Enqueue(obj);
+        }
+
+        public override void Shut()
+        {
+            Clear();
+        }
+
+        private void Clear()
+        {
+            foreach (var item in Pool)
+            {
+                foreach (var obj in item.Value)
+                {
+                    Object.Destroy(obj);
+                }
+            }
+            Pool.Clear();
         }
     }
 }

@@ -34,8 +34,10 @@ namespace KamenFramework
                 yield return item.Init();
             }
 
+            KamenGame.Instance.MessageService.Dispatch(new ServiceInitSuccessMsg() {IsSuccess = true});
             KLogger.Log("--service init success--", GameHelper.ColorGreen);
         }
+
         public void Update()
         {
             foreach (var service in mModuleList)

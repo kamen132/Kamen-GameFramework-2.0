@@ -66,18 +66,13 @@ namespace Test
         protected override void OnInit()
         {
             EnemyMoveComponent = AddComponent<EnemyMoveComponent>();
-            // KamenGame.Instance.ResourceService.LoadAsync<GameObject>("Assets/GameRes/Entity/Cube.prefab", (handle) =>
-            // {
-            //     mTarget = handle.InstantiateSync();
-            //     handle.Release();
-            // });
             mTarget = KamenGame.Instance.ObjectPoolService.Get("Assets/GameRes/Entity/Cube.prefab");
         }
 
         public override void Dispose()
         {
             base.Dispose();
-            UnityEngine.Object.Destroy(mTarget);
+            KamenGame.Instance.ObjectPoolService.Push(mTarget);
             mTarget = null;
         }
     }

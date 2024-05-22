@@ -1,4 +1,6 @@
-﻿namespace KamenFramework
+﻿using System;
+
+namespace KamenFramework
 {
     public class KamenGame : MonoSingleton<KamenGame>
     {
@@ -36,7 +38,7 @@
 
         public SceneObjectContainer MainSceneContainer => mMainSceneContainer;
         private SceneObjectContainer mMainSceneContainer;
-
+        
         protected override void OnInitialize()
         {
             base.OnInitialize();

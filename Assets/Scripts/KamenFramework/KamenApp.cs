@@ -20,5 +20,10 @@ namespace KamenFramework
         {
             ServiceManager.Instance.FixUpdate();
         }
+
+        private void OnApplicationQuit()
+        {
+            ServiceManager.Instance.Shut();
+        }
     }
 }
