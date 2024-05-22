@@ -22,7 +22,7 @@ namespace KamenFramework
         /// <summary>
         /// 场景容器
         /// </summary>
-        public SceneObjectContainer SceneContext { get; private set; } = new SceneObjectContainer();
+        public SceneObjectContainer SceneContainer { get; private set; } = new SceneObjectContainer();
         
             
         /// <summary>
@@ -64,7 +64,7 @@ namespace KamenFramework
             SceneMap.TryGetValue(sceneType, out var scene);
             return scene as T;
         }
-        
+
         /// <summary>
         /// 切换场景
         /// </summary>
@@ -87,16 +87,16 @@ namespace KamenFramework
 
             InSwitching = true;
             SwitchSceneMap.Clear();
-            SceneContext.SetTarget(type);
-            
-            if (SceneContext.LastSceneType != SceneType.None)
+            SceneContainer.SetTarget(type);
+
+            if (SceneContainer.LastSceneType != SceneType.None)
             {
-                SceneMap.TryGetValue(SceneContext.LastSceneType, out lastLayer);
+                SceneMap.TryGetValue(SceneContainer.LastSceneType, out lastLayer);
             }
-            
+
             if (null != lastLayer)
             {
-                if (type != SceneContext.LastSceneType)
+                if (type != SceneContainer.LastSceneType)
                 {
                     SwitchSceneMap.Add("ExitScene", ExitScene(lastLayer as IScene, switchLayer as IScene));
                     SwitchSceneMap.Add("SwitchScene", SwitchScene(switchLayer));
@@ -111,7 +111,7 @@ namespace KamenFramework
 
             KamenGame.Instance.CoroutineService.StartCoroutine(RunSwitchScene(callback, callbackWithResult));
         }
-        
+
         /// <summary>
         /// 开始切换场景
         /// </summary>
@@ -125,7 +125,7 @@ namespace KamenFramework
                 var switchValue = SwitchSceneMap.ElementAt(i);
                 var switchRoutine = switchValue.Value;
                 var routineName = switchValue.Key;
-                KLogger.Log($"SwitchScening CurrentRun:[{routineName}],  CurScene:[{SceneContext.LastSceneType}] -> TargetScene:[{SceneContext.SceneType}]", Color.red);
+                KLogger.Log($"SwitchScening CurrentRun:[{routineName}],  CurScene:[{SceneContainer.LastSceneType}] -> TargetScene:[{SceneContainer.SceneType}]", Color.red);
                 yield return switchRoutine;
                 if (routineName.Equals("SwitchScene"))
                 {
@@ -137,7 +137,7 @@ namespace KamenFramework
             InSwitching = false;
             Resources.UnloadUnusedAssets();
             GC.Collect();
-            KLogger.Log($"--Switch Success CurScene:{SceneContext.SceneType}--",GameHelper.ColorGreen);
+            KLogger.Log($"--Switch Success CurScene:{SceneContainer.SceneType}--",GameHelper.ColorGreen);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace KamenFramework
 
             layer.StateType = SceneStateType.PreSwitch;
             {
-                var enumerator = layer.OnPreSwitch(SceneContext.LastSceneType, layer.SceneType);
+                var enumerator = layer.OnPreSwitch(SceneContainer.LastSceneType, layer.SceneType);
                 if (null != enumerator)
                 {
                     yield return enumerator;
@@ -200,7 +200,7 @@ namespace KamenFramework
             layer.StateType = SceneStateType.Switching;
 
             {
-                var enumerator = layer.OnSwitching(SceneContext.LastSceneType, layer.SceneType);
+                var enumerator = layer.OnSwitching(SceneContainer.LastSceneType, layer.SceneType);
                 if (null != enumerator)
                 {
                     yield return enumerator;
@@ -212,7 +212,7 @@ namespace KamenFramework
             layer.StateType = SceneStateType.PostSwitch;
 
             {
-                var enumerator = layer.OnPostSwitch(SceneContext.LastSceneType, layer.SceneType);
+                var enumerator = layer.OnPostSwitch(SceneContainer.LastSceneType, layer.SceneType);
                 if (null != enumerator)
                 {
                     yield return enumerator;
@@ -240,7 +240,7 @@ namespace KamenFramework
 
             layer.StateType = SceneStateType.PreEnter;
             {
-                var enumerator = layer.OnPreEnter(SceneContext.LastSceneType, layer.SceneType);
+                var enumerator = layer.OnPreEnter(SceneContainer.LastSceneType, layer.SceneType);
                 if (null != enumerator)
                 {
                     yield return enumerator;
@@ -250,7 +250,7 @@ namespace KamenFramework
             layer.StateType = SceneStateType.Entering;
 
             {
-                var enumerator = layer.OnEntering(SceneContext.LastSceneType, layer.SceneType);
+                var enumerator = layer.OnEntering(SceneContainer.LastSceneType, layer.SceneType);
                 if (null != enumerator)
                 {
                     yield return enumerator;
@@ -260,7 +260,7 @@ namespace KamenFramework
 
             layer.StateType = SceneStateType.PostEnter;
             {
-                var enumerator = layer.OnPostEnter(SceneContext.LastSceneType, layer.SceneType);
+                var enumerator = layer.OnPostEnter(SceneContainer.LastSceneType, layer.SceneType);
                 if (null != enumerator)
                 {
                     yield return enumerator;

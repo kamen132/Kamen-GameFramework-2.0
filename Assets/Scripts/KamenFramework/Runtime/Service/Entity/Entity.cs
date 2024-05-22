@@ -104,6 +104,17 @@ namespace KamenFramework
             return component as TKComponent;
         }
 
+        public TKComponent TryGetOrAddComponent<TKComponent>() where TKComponent : class, IComponent
+        {
+            var component = GetComponent<TKComponent>();
+            if (component == null)
+            {
+                return AddComponent<TKComponent>();
+            }
+
+            return component;
+        }
+
         /// <summary>
         /// 获取实体上组件
         /// </summary>
@@ -112,13 +123,14 @@ namespace KamenFramework
         public TKComponent AddComponent<TKComponent>() where TKComponent : class, IComponent
         {
             Type typeOfComponent = typeof(TKComponent);
-            var component = (IComponent) Activator.CreateInstance(typeOfComponent, this);
-            if (!Components.TryGetValue(typeOfComponent.ToString(), out IComponent aa))
+            var component = (KComponent) Activator.CreateInstance(typeOfComponent, this);
+            if (!Components.TryGetValue(typeOfComponent.ToString(), out IComponent saveComponent))
             {
                 Components.Add(component.ToString(), component);
+                return component as TKComponent;
             }
 
-            return component as TKComponent;
+            return saveComponent as TKComponent;
         }
 
         /// <summary>
@@ -139,13 +151,18 @@ namespace KamenFramework
         {
             foreach (var component in Components)
             {
-                Components.Remove(component.Key);
+                component.Value.Dispose();
             }
+            Components.Clear();
+            Components = null;
         }
 
         public virtual void Update()
         {
-
+            foreach (var component in Components)
+            {
+                component.Value.Update();
+            }
         }
 
         public virtual void FixedUpdate()

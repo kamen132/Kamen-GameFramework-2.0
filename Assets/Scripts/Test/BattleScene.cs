@@ -40,11 +40,31 @@ namespace Test
         }
     }
 
+    public class EnemyMoveComponent : KComponent
+    {
+        public EnemyMoveComponent(IEntity entity) : base(entity)
+        {
+        }
+
+        protected override void OnUpdate()
+        {
+            base.OnUpdate();
+            KLogger.Log("EnemyMoving!!!");
+        }
+
+        protected override void OnDispose()
+        {
+            base.OnDispose();
+            KLogger.Log("EnemyMoveComponent Dispose");
+        }
+    }
     public class EnemyEntity : BattleEntity
     {
         private GameObject mTarget;
+        private EnemyMoveComponent EnemyMoveComponent;
         protected override void OnInit()
         {
+            EnemyMoveComponent = AddComponent<EnemyMoveComponent>();
             KamenGame.Instance.ResourceService.LoadAsync<GameObject>("Assets/GameRes/Entity/Cube.prefab", (handle) =>
             {
                 mTarget = handle.InstantiateSync();

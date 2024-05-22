@@ -14,5 +14,25 @@
         {
             Entity = entity;
         }
+
+        public void Update()
+        {
+            OnUpdate();
+        }
+
+        protected virtual void OnUpdate()
+        {
+            
+        }
+
+        protected virtual void OnDispose()
+        {
+            
+        }
+
+        public void Dispose()
+        {
+            OnDispose();
+        }
     }
 }
