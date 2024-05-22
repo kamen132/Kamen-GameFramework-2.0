@@ -14,13 +14,13 @@ namespace KamenFramework
         {
             if (parent == null)
             {
-                KLogger.LogError("AttachTo parent is nil");
+                KLogger.LogError("AttachTo parent is null");
                 return;
             }
 
             if (go == null)
             {
-                KLogger.LogError("AttachTo go is nil");
+                KLogger.LogError("AttachTo go is null");
                 return;
             }
 

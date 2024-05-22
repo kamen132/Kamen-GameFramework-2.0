@@ -34,6 +34,9 @@ namespace KamenFramework
         /// </summary>
         public IResourceService ResourceService => ServiceManager.Instance.GetService<IResourceService>();
 
+        /// <summary>
+        /// 对象池
+        /// </summary>
         public IObjectPoolService ObjectPoolService => ServiceManager.Instance.GetService<IObjectPoolService>();
 
         public SceneObjectContainer MainSceneContainer => mMainSceneContainer;
