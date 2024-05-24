@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using KamenFramework.Service.Update;
 
 namespace KamenFramework
 {
@@ -24,6 +25,7 @@ namespace KamenFramework
             RegisteredService<IAudioService>(new AudioService());
             RegisteredService<ICoroutineService>(new CoroutineService());
             RegisteredService<IObjectPoolService>(new ObjectPoolService());
+            RegisteredService<IUpdateService>(new UpdateService());
             KLogger.Log("--service add success--", GameHelper.ColorGreen);
         }
 
