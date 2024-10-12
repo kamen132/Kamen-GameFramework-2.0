@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace KamenFramework
 {
     public class KamenGame : MonoSingleton<KamenGame>
@@ -39,9 +38,11 @@ namespace KamenFramework
         /// </summary>
         public IObjectPoolService ObjectPoolService => ServiceManager.Instance.GetService<IObjectPoolService>();
 
+        public IUpdateService UpdateService => ServiceManager.Instance.GetService<IUpdateService>();
+        
         public SceneObjectContainer MainSceneContainer => mMainSceneContainer;
         private SceneObjectContainer mMainSceneContainer;
-        
+
         protected override void OnInitialize()
         {
             base.OnInitialize();

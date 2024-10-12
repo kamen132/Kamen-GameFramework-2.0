@@ -13,6 +13,8 @@ namespace KamenFramework
         private int mPoolTotalCount;
         public int PoolTotalCount => mPoolTotalCount;
 
+        public int PoolMaxCount = 30;
+
         protected override IEnumerator OnInit()
         {
             mPoolRoot = new GameObject("PoolRoot").transform;
@@ -24,6 +26,7 @@ namespace KamenFramework
         public GameObject Get(string path, Transform parent = null, bool resetPos = true)
         {
             GameObject prefab = Get<GameObject>(path);
+            //prefab.transform.SetParent(parent, true);
             if (resetPos)
             {
                 prefab.transform.localPosition = Vector3.zero;
@@ -65,7 +68,7 @@ namespace KamenFramework
             }
 
             var path = mono.AssetPath;
-            obj.transform.SetParent(mPoolRoot);
+            //obj.transform.SetParent(mPoolRoot);
             obj.transform.position = new Vector3(9999, 9999);
             Push(path, obj);
         }
@@ -82,6 +85,12 @@ namespace KamenFramework
             {
                 queue = new Queue<Object>();
                 Pool.Add(path, queue);
+            }
+
+            if (queue.Count > PoolMaxCount)
+            {
+                GameObject.Destroy(obj);
+                return;
             }
 
             mPoolTotalCount++;

@@ -69,9 +69,9 @@ namespace Test
             mTarget = KamenGame.Instance.ObjectPoolService.Get("Assets/GameRes/Entity/Cube.prefab");
         }
 
-        public override void Dispose()
+        protected override void OnDispose()
         {
-            base.Dispose();
+            base.OnDispose();
             KamenGame.Instance.ObjectPoolService.Push(mTarget);
             mTarget = null;
         }

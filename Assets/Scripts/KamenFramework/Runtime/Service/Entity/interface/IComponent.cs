@@ -6,5 +6,6 @@ namespace KamenFramework
     {
          IEntity Entity { get; }
          void Update();
+         void FixedUpdate();
     }
 }

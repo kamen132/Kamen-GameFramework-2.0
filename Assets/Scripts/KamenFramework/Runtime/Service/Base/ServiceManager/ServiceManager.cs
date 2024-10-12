@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using KamenFramework.Service.Update;
 
 namespace KamenFramework
 {
-    public class ServiceManager : Singleton<ServiceManager>, IServiceManager
+    public class ServiceManager : MonoSingleton<ServiceManager>, IServiceManager
     {
         /// <summary>
         /// 模块字典-用于查找

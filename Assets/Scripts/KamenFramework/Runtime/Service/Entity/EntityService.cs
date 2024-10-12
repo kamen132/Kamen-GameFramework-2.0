@@ -106,17 +106,17 @@ namespace KamenFramework
         
         public void OnUpdate()
         {
-            foreach (var entity in Entities)
+            for (int i = 0; i < Entities.Count; i++)
             {
-                entity.Update();
+                Entities[i].Update();
             }
         }
 
         public void OnFixedUpdate()
         {
-            foreach (var entity in Entities)
+            for (int i = 0; i < Entities.Count; i++)
             {
-                entity.FixedUpdate();
+                Entities[i].FixedUpdate();
             }
         }
         
@@ -130,9 +130,9 @@ namespace KamenFramework
         /// </summary>
         public void Reset()
         {
-            foreach (var iterator in Entities)
+            for (int i = 0; i < Entities.Count; i++)
             {
-                iterator.Dispose();
+                Entities[i].Dispose();
             }
 
             Entities.Clear();

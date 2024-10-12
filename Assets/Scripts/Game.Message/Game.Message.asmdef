@@ -2,11 +2,11 @@
     "name": "Game.Message",
     "rootNamespace": "",
     "references": [
-        "GUID:d46b52da0bb147d4e9eb862b5874ac39"
+        "GUID:14d180200493fc745939f98757cec082"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
-    "allowUnsafeCode": false,
+    "allowUnsafeCode": true,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,

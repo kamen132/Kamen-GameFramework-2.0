@@ -1,15 +1,14 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using YooAsset;
 
 namespace KamenFramework
 {
     public class KamenApp : MonoBehaviour
     {
-        private void Awake()
-        {
-            ServiceManager.Instance.AddService();
-            StartCoroutine(ServiceManager.Instance.InitService());
-        }
+        [SerializeField] [Header("资源使用编译器")]
+        public EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
+
+        public static KamenApp Instance;
 
         private void Update()
         {

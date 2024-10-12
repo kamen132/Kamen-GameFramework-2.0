@@ -7,7 +7,7 @@ namespace KamenFramework
         SceneObjectContainer SceneContainer { get; }
         IModel Model { get; }
         void SetSceneContainer(SceneObjectContainer sceneContainer);
-        EntityType Type { get; }
+        EntityType EntityType { get; }
         int Index { get;}
         bool IsAlive { get; }
         void Init(int index,IModel model);

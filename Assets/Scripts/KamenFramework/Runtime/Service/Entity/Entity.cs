@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KamenFramework
 {
@@ -27,12 +28,12 @@ namespace KamenFramework
         /// </summary>
         public SceneObjectContainer SceneContainer { get; private set; }
 
-        public IModel Model { get; protected set; }
+        public virtual IModel Model { get; protected set; }
 
         /// <summary>
         /// 实体类型
         /// </summary>
-        public EntityType Type { get; protected set; }
+        public virtual EntityType EntityType { get; protected set; }
 
         /// <summary>
         /// 实体标识
@@ -48,7 +49,7 @@ namespace KamenFramework
         /// <summary>
         /// 实体上所有组件
         /// </summary>
-        private Dictionary<string, IComponent> Components;
+        private Dictionary<string, IComponent> Components = new Dictionary<string, IComponent>();
 
         /// <summary>
         /// 设置实体所在场景
@@ -60,14 +61,6 @@ namespace KamenFramework
         }
 
         /// <summary>
-        /// 构造方法
-        /// </summary>
-        public Entity()
-        {
-            Components = new Dictionary<string, IComponent>();
-        }
-
-        /// <summary>
         /// 初始化
         /// </summary>
         /// <param name="index"></param>
@@ -75,7 +68,15 @@ namespace KamenFramework
         {
             Index = index;
             Model = model;
-            OnInit();
+            if (LoadPrefab())
+            {
+                OnInit();
+            }
+        }
+
+        protected virtual bool LoadPrefab()
+        {
+            return true;
         }
 
         /// <summary>
@@ -86,10 +87,17 @@ namespace KamenFramework
 
         }
 
-        public virtual void Dispose()
+        public void Dispose()
         {
             State = EntityState.Disposed;
+            OnDispose();
             ClearComponent();
+            Model?.Dispose();
+        }
+
+        protected virtual void OnDispose()
+        {
+            
         }
 
         /// <summary>
@@ -149,16 +157,22 @@ namespace KamenFramework
         /// </summary>
         public void ClearComponent()
         {
-            foreach (var component in Components)
+            for (int i = 0; i < Components?.Count; i++)
             {
-                component.Value.Dispose();
+                var comp = Components.ElementAt(i);
+                comp.Value.Dispose();
             }
-            Components.Clear();
+            Components?.Clear();
             Components = null;
         }
 
         public virtual void Update()
         {
+            if (!IsAlive)
+            {
+                return;
+            }
+            
             foreach (var component in Components)
             {
                 component.Value.Update();
@@ -167,7 +181,10 @@ namespace KamenFramework
 
         public virtual void FixedUpdate()
         {
-
+            foreach (var component in Components)
+            {
+                component.Value.FixedUpdate();
+            }
         }
 
         public override string ToString()

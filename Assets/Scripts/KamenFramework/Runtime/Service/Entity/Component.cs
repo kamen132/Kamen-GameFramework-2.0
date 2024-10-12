@@ -20,6 +20,16 @@
             OnUpdate();
         }
 
+        public void FixedUpdate()
+        {
+            OnFixedUpdate();
+        }
+
+        protected virtual void OnFixedUpdate()
+        {
+            
+        }
+
         protected virtual void OnUpdate()
         {
             

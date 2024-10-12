@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KamenFramework.Service.Update
+namespace KamenFramework
 {
     public interface IUpdateService :IService
     {
@@ -12,7 +12,6 @@ namespace KamenFramework.Service.Update
     public class UpdateService : ServiceBase ,IUpdateService
     {
         private readonly Dictionary<string, ITickHandler> mTickMap = new Dictionary<string, ITickHandler>();
-        private double mPauseTime;
         private DateTime mLastTime;
         public GameStatus Status { get; set; }
 
@@ -30,25 +29,17 @@ namespace KamenFramework.Service.Update
         {
             mTickMap.Remove(name);
         }
+
         public override void Update()
         {
-            DateTime nowTime = DateTime.Now;
             if (Status == GameStatus.Pause)
             {
-                mLastTime = nowTime;
                 return;
             }
 
-            TimeSpan difTime = nowTime - mLastTime;
-            if (!(difTime.TotalMilliseconds < 100.0))
+            foreach (var tick in mTickMap)
             {
-                mLastTime = nowTime;
-                foreach (var tick in mTickMap)
-                {
-                    float passedTime = (float) ((difTime.TotalMilliseconds - mPauseTime) / 1000.0) * Time.timeScale;
-                    mPauseTime = 0.0;
-                    tick.Value.Handle(passedTime);
-                }
+                tick.Value.Handle(Time.deltaTime);
             }
         }
     }

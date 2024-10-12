@@ -6,6 +6,8 @@
 */
 
 
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace KamenFramework
@@ -55,6 +57,23 @@ namespace KamenFramework
         {
             AwakeEx();
         }
+        private readonly List<IDisposable> _entrustDisposables = new List<IDisposable>();
+
+        public IDisposable Register<T>(Action<T> callback) where T : MessageModel
+        {
+            IDisposable disposable = KamenGame.Instance.MessageService.Register(callback);
+            _entrustDisposables.Add(disposable);
+            return disposable;
+        }
+        
+        private void EntrustDisposablesClear()
+        {
+            foreach (IDisposable entrustDisposable in _entrustDisposables)
+            {
+                entrustDisposable.Dispose();
+            }
+            _entrustDisposables.Clear();
+        }
 
         void Start()
         {
@@ -95,6 +114,7 @@ namespace KamenFramework
                 singleton.MonoSingletonInterfaceOnUnInitialize();
             }
             OnDestroyEx();
+            EntrustDisposablesClear();
             mInstance = null;
         }
 

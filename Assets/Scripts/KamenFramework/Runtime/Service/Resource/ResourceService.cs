@@ -16,8 +16,29 @@ namespace KamenFramework
             YooAssets.Initialize();
             var package = YooAssets.CreatePackage("DefaultPackage");
             YooAssets.SetDefaultPackage(package);
-            var initParameters = new OfflinePlayModeParameters();
-            yield return package.InitializeAsync(initParameters);
+            EPlayMode playMode = EPlayMode.OfflinePlayMode;
+            
+#if UNITY_EDITOR
+            playMode = KamenApp.Instance.PlayMode;
+#endif
+            if (playMode == EPlayMode.EditorSimulateMode)
+            {
+                var initParameters = new EditorSimulateModeParameters();
+                var simulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild(EDefaultBuildPipeline.BuiltinBuildPipeline, "DefaultPackage");
+                initParameters.SimulateManifestFilePath = simulateManifestFilePath;
+                yield return package.InitializeAsync(initParameters);
+                var allShader = YooAssets.GetPackage("DefaultPackage").LoadAllAssetsSync<Shader>("Assets/GameRes/shader");
+            }
+            if (playMode == EPlayMode.OfflinePlayMode)
+            {
+                //单机模式
+                var initParameters = new OfflinePlayModeParameters();
+                yield return package.InitializeAsync(initParameters);
+                var allShader = YooAssets.GetPackage("DefaultPackage").LoadAllAssetsSync<Shader>("Assets/GameRes/shader/FlashWhiteShader.shader");
+                yield return allShader;
+            }
+
+            yield return base.OnInit();
         }
 
         public TObject LoadAsset<TObject>(string location) where TObject : Object

@@ -2,7 +2,6 @@
 {
     public enum EntityType
     {
-        Actor,
-        Bullet,
+        Char,
     }
 }

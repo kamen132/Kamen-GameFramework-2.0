@@ -3,15 +3,11 @@ using System.Collections.Generic;
 
 namespace KamenFramework
 {
-    public abstract class ManualModel : IModel
+    public abstract class ManualModel : MessageModel, IModel
     {
         private readonly List<IDisposable> mEntrustDisposables = new List<IDisposable>();
-
-        ~ManualModel()
-        {
-            EntrustDisposablesClear();
-        }
-
+        protected IMessageService MessageService => KamenGame.Instance.MessageService;
+        
         protected void EntrustDisposable(IDisposable disposable)
         {
             mEntrustDisposables.Add(disposable);
@@ -19,7 +15,7 @@ namespace KamenFramework
 
         protected IDisposable Register<T>(Action<T> callback) where T : MessageModel
         {
-            IDisposable disposable = KamenGame.Instance.MessageService.Register(callback);
+            IDisposable disposable = MessageService.Register(callback);
             EntrustDisposable(disposable);
             return disposable;
         }
@@ -32,5 +28,18 @@ namespace KamenFramework
             }
             mEntrustDisposables.Clear();
         }
+
+        public void Dispose()
+        {
+            OnDispose();
+            EntrustDisposablesClear();
+        }
+
+        protected virtual void OnDispose()
+        {
+            
+        }
+
+        public string Guid { get; set; }
     }
 }

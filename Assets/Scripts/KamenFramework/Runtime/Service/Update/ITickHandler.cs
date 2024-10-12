@@ -1,4 +1,4 @@
-﻿namespace KamenFramework.Service.Update
+﻿namespace KamenFramework
 {
     public interface ITickHandler
     {
