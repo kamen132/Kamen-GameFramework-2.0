@@ -6,7 +6,7 @@ namespace KamenFramework
      /// <summary>
     /// 工具类 - 本地缓存 PlayerPrefs
     /// </summary>
-    public partial class GameHelper
+    public static partial class GameHelper
     {
         /// <summary>
         /// 密钥
@@ -16,7 +16,7 @@ namespace KamenFramework
         /// <summary>
         /// 清除本地缓存
         /// </summary>
-        public void DeleteAllLocalData()
+        public static void DeleteAllLocalData()
         {
             PlayerPrefs.DeleteAll();
         }
