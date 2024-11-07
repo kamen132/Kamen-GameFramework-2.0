@@ -27,7 +27,6 @@ namespace KamenFramework
                 var simulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild(EDefaultBuildPipeline.BuiltinBuildPipeline, "DefaultPackage");
                 initParameters.SimulateManifestFilePath = simulateManifestFilePath;
                 yield return package.InitializeAsync(initParameters);
-                var allShader = YooAssets.GetPackage("DefaultPackage").LoadAllAssetsSync<Shader>("Assets/GameRes/shader");
             }
             if (playMode == EPlayMode.OfflinePlayMode)
             {

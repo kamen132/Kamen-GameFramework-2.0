@@ -9,7 +9,13 @@ namespace KamenFramework
         public EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
 
         public static KamenApp Instance;
-
+        private void Awake()
+        {
+            Application.targetFrameRate = 60;
+            Instance = this;
+            ServiceManager.Instance.AddService();
+            StartCoroutine(ServiceManager.Instance.InitService());
+        }
         private void Update()
         {
             ServiceManager.Instance.Update();
