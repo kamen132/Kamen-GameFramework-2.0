@@ -1,4 +1,6 @@
 ﻿
+using KamenGameFramewrok;
+
 namespace KamenFramework
 {
     public class KamenGame : MonoSingleton<KamenGame>
@@ -39,6 +41,8 @@ namespace KamenFramework
         public IObjectPoolService ObjectPoolService => ServiceManager.Instance.GetService<IObjectPoolService>();
 
         public IUpdateService UpdateService => ServiceManager.Instance.GetService<IUpdateService>();
+
+        public ISystemManager SystemManager { get; private set; }
         
         public SceneObjectContainer MainSceneContainer => mMainSceneContainer;
         private SceneObjectContainer mMainSceneContainer;
@@ -46,7 +50,16 @@ namespace KamenFramework
         protected override void OnInitialize()
         {
             base.OnInitialize();
+            ServiceManager.Instance.AddService();
+            StartCoroutine(ServiceManager.Instance.InitService());
             mMainSceneContainer = new SceneObjectContainer();
+            SystemManager = new KamenSystemManager(Instance);
+        }
+
+        protected override void UpdateEx(float interval)
+        {
+            base.UpdateEx(interval);
+            
         }
     }
 }

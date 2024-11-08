@@ -89,7 +89,7 @@ namespace KamenFramework
                 }
             }
 
-            KamenGame.Instance.CoroutineService.StopCoroutine(Id);
+            ServiceManager.Instance.GetService<ICoroutineService>().StopCoroutine(Id);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace KamenFramework
         {
             CoroutineTask task = new CoroutineTask(mCoroutineTaskId++);
             mCoroutines.Add(task.Id, task);
-            GameRoot.StartCoroutine(task.StartCoroutineTask(routine));
+            KamenApp.Instance.StartCoroutine(task.StartCoroutineTask(routine));
             return task.Id;
         }
         
@@ -70,7 +70,7 @@ namespace KamenFramework
             base.Shut();
             mCoroutines.Clear();
             mCoroutineTaskId = 0;
-            GameRoot.StopAllCoroutines();
+            KamenApp.Instance.StopAllCoroutines();
         }
     }
 }

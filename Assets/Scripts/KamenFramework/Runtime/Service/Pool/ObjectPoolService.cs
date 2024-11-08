@@ -41,7 +41,7 @@ namespace KamenFramework
             T obj = default;
             if (!Pool.TryGetValue(path, out var source) || !source.Any())
             {
-                obj = KamenGame.Instance.ResourceService.LoadAsset<T>(path);
+                obj = ServiceManager.Instance.GetService<IResourceService>().LoadAsset<T>(path);
             }
             else
             {

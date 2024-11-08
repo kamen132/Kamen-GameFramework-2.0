@@ -26,7 +26,7 @@ namespace KamenFramework
                 MethodInfo handleMethod = controllerType.GetMethod("Handle");
                 if (!(handleMethod == null) && !(messageType == null))
                 {
-                    KamenGame.Instance.MessageService.Register(messageType, (msg) =>
+                    ServiceManager.Instance.GetService<IMessageService>().Register(messageType, (msg) =>
                     {
                         handleMethod.Invoke(controllerInstance, new object[1] {msg});
                     });

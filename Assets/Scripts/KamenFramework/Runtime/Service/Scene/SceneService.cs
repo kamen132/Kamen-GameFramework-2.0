@@ -109,7 +109,7 @@ namespace KamenFramework
             }
 
 
-            KamenGame.Instance.CoroutineService.StartCoroutine(RunSwitchScene(callback, callbackWithResult));
+            ServiceManager.Instance.GetService<ICoroutineService>().StartCoroutine(RunSwitchScene(callback, callbackWithResult));
         }
 
         /// <summary>

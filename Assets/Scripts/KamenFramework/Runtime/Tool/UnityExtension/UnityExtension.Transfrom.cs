@@ -37,6 +37,10 @@ namespace KamenFramework.Runtime.Tool.UnityExtension
                 trans.localPosition = localPos;
             }
         }
+        public static Vector2 ToXz(this Vector3 thiz)
+        {
+            return new Vector2(thiz.x, thiz.z);
+        }
         
         public static void OffsetX(this Transform trans, float offsetX)
         {

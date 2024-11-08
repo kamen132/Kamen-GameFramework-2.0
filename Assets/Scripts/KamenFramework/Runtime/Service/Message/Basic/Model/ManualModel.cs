@@ -6,7 +6,7 @@ namespace KamenFramework
     public abstract class ManualModel : MessageModel, IModel
     {
         private readonly List<IDisposable> mEntrustDisposables = new List<IDisposable>();
-        protected IMessageService MessageService => KamenGame.Instance.MessageService;
+        protected IMessageService MessageService => ServiceManager.Instance.GetService<IMessageService>();
         
         protected void EntrustDisposable(IDisposable disposable)
         {

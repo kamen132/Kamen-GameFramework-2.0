@@ -28,8 +28,8 @@ namespace KamenFramework
 
         public void RunTask()
         {
-            KamenGame.Instance.CoroutineService.StopCoroutine(mTaskId);
-            mTaskId =  KamenGame.Instance.CoroutineService.StartCoroutine(UpdateData());
+            ServiceManager.Instance.GetService<ICoroutineService>().StopCoroutine(mTaskId);
+            mTaskId =  ServiceManager.Instance.GetService<ICoroutineService>().StartCoroutine(UpdateData());
         }
 
         private IEnumerator UpdateData()

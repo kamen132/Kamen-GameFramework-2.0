@@ -4,7 +4,6 @@ namespace KamenFramework
 {
     public abstract class ServiceBase : IService
     {
-        protected KamenGame GameRoot => KamenGame.Instance;
         public IEnumerator Init()
         {
             BeforeInit();

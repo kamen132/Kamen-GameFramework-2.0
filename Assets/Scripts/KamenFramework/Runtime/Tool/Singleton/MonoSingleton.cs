@@ -61,7 +61,7 @@ namespace KamenFramework
 
         public IDisposable Register<T>(Action<T> callback) where T : MessageModel
         {
-            IDisposable disposable = KamenGame.Instance.MessageService.Register(callback);
+            IDisposable disposable = ServiceManager.Instance.GetService<IMessageService>().Register(callback);
             _entrustDisposables.Add(disposable);
             return disposable;
         }

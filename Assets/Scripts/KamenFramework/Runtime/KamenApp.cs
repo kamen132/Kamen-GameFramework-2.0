@@ -13,8 +13,6 @@ namespace KamenFramework
         {
             Application.targetFrameRate = 60;
             Instance = this;
-            ServiceManager.Instance.AddService();
-            StartCoroutine(ServiceManager.Instance.InitService());
         }
         private void Update()
         {
